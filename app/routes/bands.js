@@ -1,9 +1,14 @@
 import Route from "@ember/routing/route";
-import EmberObject from "@ember/object";
 import { A } from "@ember/array";
+import EmberObject, { computed } from '@ember/object';
+import { dasherize } from '@ember/string';
 
 let Band = EmberObject.extend({
   name: ""
+});
+
+slug: computed('name', function() {
+  return dasherize(this.name);
 });
 
 let Song = EmberObject.extend({
