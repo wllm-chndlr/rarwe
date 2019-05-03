@@ -19,10 +19,7 @@ export default Component.extend({
 
     actions: {
         setRating(newRating) {
-            return this.onClick({
-                item: this.item,
-                rating: newRating
-            });
+            return this.onClick(newRating);
         }
     }
 });
