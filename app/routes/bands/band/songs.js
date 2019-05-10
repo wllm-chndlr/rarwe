@@ -9,5 +9,11 @@ export default Route.extend({
       isAddingSong: false,
       newSongTitle: ''
     })
+  },
+  actions: {
+    didTransition() {
+      let band = this.modelFor(this.routeName);
+      document.title = `${band.name} songs - Rock & Roll`;
+    },
   }
 });
