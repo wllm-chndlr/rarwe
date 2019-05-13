@@ -4,8 +4,13 @@ export default Controller.extend({
     isEditing: false,
 
     actions: {
-        toggleEditing() {
-            this.toggleProperty('isEditing');
+        edit() {
+            this.set('isEditing', true);
+        },
+        async save() {
+            let band = this.model;
+            await band.save();
+            this.set('isEditing', false);
         }
     }
 });
