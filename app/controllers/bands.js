@@ -8,25 +8,25 @@ export default Controller.extend({
     isAddButtonDisabled: empty('newBandName'),
 
     actions: {
-        addBand() {
-            this.set('isAddingBand', true);
-        },
+      addBand() {
+        this.set('isAddingBand', true);
+      },
 
-        cancelAddBand() {
-            this.set('isAddingBand', false);
-        },
+      cancelAddBand() {
+        this.set('isAddingBand', false);
+      },
 
-        async saveBand(event) {
-            event.preventDefault();
-            let newBand = this.store.createRecord('band', {
-                name: this.newBandName
-            });
-            await newBand.save();
-            this.setProperties({
-                newBandName: '',
-                isAddingBand: false,
-            });
-            this.transitionToRoute('bands.band.songs', newBand.id);
-        }
+      async saveBand(event) {
+        event.preventDefault();
+        let newBand = this.store.createRecord('band', {
+            name: this.newBandName
+        });
+        await newBand.save();
+        this.setProperties({
+            newBandName: '',
+            isAddingBand: false,
+        });
+        this.transitionToRoute('bands.band.songs', newBand.id);
+      }
     }
 });
