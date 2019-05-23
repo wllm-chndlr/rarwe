@@ -1,10 +1,10 @@
 <div class="rr-controls-panel">
   <div class="rr-sort-panel">
-    <button class="rr-sort-button" data-test-rr="sort-by-rating-desc">
+    <button class="rr-sort-button" data-test-rr="sort-by-rating-desc" onclick={{action (mut sortBy) "ratingDesc"}}>
       Rating
       {{fa-icon "angle-down"}}
     </button>
-    <button class="rr-sort-button" data-test-rr="sort-by-rating-asc">
+    <button class="rr-sort-button" data-test-rr="sort-by-rating-asc" onclick={{action (mut sortBy) "ratingAsc"}}>
       Rating
       {{fa-icon "angle-up"}}
     </button>
@@ -12,7 +12,7 @@
       Title
       {{fa-icon "angle-down"}}
     </button>
-    <button class="rr-sort-button" data-test-rr="sort-by-title-asc">
+    <button class="rr-sort-button" data-test-rr="sort-by-title-asc" onclick={{action (mut sortBy) "titleAsc"}}>
       Title
       {{fa-icon "angle-up"}}
     </button>
