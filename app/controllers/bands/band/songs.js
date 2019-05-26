@@ -6,7 +6,12 @@ export default Controller.extend({
     isAddingSong: false,
     newSongTitle: '',
     sortBy: 'ratingDesc',
+    searchTerm: '',
     isAddButtonDisabled: empty('newSongTitle'),
+    queryParams: {
+      sortBy: 'sort',
+      searchTerm: 's',
+    },
 
     sortProperties: computed('sortBy', function() {
       let options = {
@@ -18,7 +23,14 @@ export default Controller.extend({
       return options[this.sortBy];
     }),
 
-    sortedSongs: sort('model.songs', 'sortProperties'),
+    matchingSongs: computed('model.songs.@each.title', 'searchTerm', function() {
+      let searchTerm = this.searchTerm.toLowerCase();
+      return this.model.get('songs').filter((song) => {
+        return song.title.toLowerCase().includes(searchTerm);
+      });
+    }),
+
+    sortedSongs: sort('matchingSongs', 'sortProperties'),
 
     actions: {
         addSong() {
