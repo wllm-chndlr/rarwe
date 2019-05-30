@@ -11,6 +11,8 @@
   --button-disabled-color: var(--light-blue);
   --bright-yellow: #ffda00;
   --navitem-link-color: var(--bright-yellow);
+  --light-red: #ff725c;
+  --error-color: var(--light-red);
 }
 
 a {
@@ -211,4 +213,29 @@ a {
   padding-left: .5rem;
   padding-right: .5rem;
   margin-left: -5px;
+}
+
+.rr-loading-pane {
+  margin: 25px auto;
+  padding-top: 50px;
+}
+
+.rr-loading-message {
+  text-align: center;
+}
+
+.rr-spinner {
+  /* background: url('/images/spinner.svg') no-repeat; */
+  height: 31px;
+  width: 31px;
+  margin: 0 auto;
+}
+
+.rr-error-pane {
+  margin: 25px auto;
+}
+
+.rr-error-message {
+  text-align: center;
+  color: var(--error-color);
 }
