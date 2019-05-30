@@ -48,7 +48,7 @@
 <ul class="rr-list">
   {{#each sortedSongs as |song|}}
     <li class="rr-list-item" data-test-rr="song-list-item">
-      {{song.title}} 
+      {{capitalize song.title}} 
       <StarRating 
           class="fr" 
           @rating={{song.rating}} 
@@ -57,7 +57,7 @@
     </li>
   {{else}}
     <li>
-      No {{model.name}} songs yet. Why don't you <a href="#" onclick={{action "addSong"}}> create one?</a>
+      No {{capitalize model.name}} songs yet. Why don't you <a href="#" onclick={{action "addSong"}}> create one?</a>
     </li>
   {{/each}}
 </ul>
