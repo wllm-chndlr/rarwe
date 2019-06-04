@@ -1,7 +1,7 @@
 import wait from 'rarwe/utils/wait';
 import { module, test } from 'qunit';
 
-module('Unit | Utility | wait', function(hooks) {
+module('Unit | Utility | wait', function() {
 
   // Replace this with your real tests.
   test('it works', function(assert) {
