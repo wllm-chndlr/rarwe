@@ -1,6 +1,6 @@
 <div class="rr-form-container">
   <h3 data-test-rr="form-header">Log in to R&R</h3>
-  <form>
+  <form onsubmit={{action "signIn"}}>
     <div class="rr-form-row-inline">
       <label for="email">Email</label>
       {{input type="email" class="rr-input ml-auto" id="email"
