@@ -19,5 +19,10 @@ module('Acceptance | Login', function(hooks) {
 
     assert.dom('[data-test-rr=bands-empty-message]').hasText("Create a band.", "A descriptive empty message is shown");
     assert.dom('[data-test-rr=user-email]').hasText('dave@tcv.com', "The logged in user's email is shown");
+
+    await click('[data-test-rr=logout]');
+    assert.dom('[data-test-rr=form-header]').hasText('Log in to R&R');
+    assert.dom('[data-test-rr=user-email]').doesNotExist();
+
   });
 });
