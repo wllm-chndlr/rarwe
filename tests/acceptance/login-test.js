@@ -23,6 +23,5 @@ module('Acceptance | Login', function(hooks) {
     await click('[data-test-rr=logout]');
     assert.dom('[data-test-rr=form-header]').hasText('Log in to R&R');
     assert.dom('[data-test-rr=user-email]').doesNotExist();
-
   });
 });
