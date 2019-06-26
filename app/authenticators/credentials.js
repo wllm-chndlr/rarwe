@@ -17,5 +17,8 @@ export default Base.extend({
     });
     let { user_email: userEmail, token } = response;
     return { userEmail, token };
+  },
+  async restore(data) {
+    return data;
   }
 });
