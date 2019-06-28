@@ -2,14 +2,30 @@
   <h3 data-test-rr="form-header">Log in to R&R</h3>
   <form onsubmit={{action "signIn"}}>
     <div class="rr-form-row-inline">
+      {{#if showErrors.email}}
+        <div
+          class="rr-form-field-error" 
+          data-test-rr="email-error"
+        >
+          {{v-get model "email" "message"}}
+        </div>
+      {{/if}}
       <label for="email">Email</label>
       {{input type="email" class="rr-input ml-auto" id="email"
-value=email}}
+value=email focus-out=(action (mut showErrors.email) true)}}
     </div>
     <div class="rr-form-row-inline">
+      {{#if showErrors.password}}
+        <div 
+          class="rr-form-field-error" 
+          data-test-rr="password-error"
+        >
+          {{v-get model "password" "message"}}
+        </div>
+      {{/if}}
       <label for="password">Password</label>
       {{input type="password" class="rr-input ml-auto" id="password"
-value=password}}
+value=password focus-out=(action (mut showErrors.password) true)}}
     </div>
     <div class="rr-form-footer">
       <div class="rr-button-panel">
