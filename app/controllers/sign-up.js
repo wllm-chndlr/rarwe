@@ -1,7 +1,17 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
+import extractServerError from 'rarwe/utils/extract-server-error';
 
 export default Controller.extend({
+  baseErrors: computed('_baseErrors', {
+    get() {
+      return this._baseErrors || [];
+    },
+    set(key, value) {
+      this.set('_baseErrors', value);
+      return this._baseErrors;
+    }
+  }),
   showErrors: computed('_showErrors', {
     get() {
       return this._showErrors || { email: false, password: false };
@@ -14,8 +24,14 @@ export default Controller.extend({
   actions: {
     async signUp(event) {
       event.preventDefault();
-      await this.model.save();
-      await this.transitionToRoute('login');
+
+      try {
+        await this.model.save();
+        await this.transitionToRoute('login');
+      } catch(response) {
+        let errorMessage = extractServerError(response.errors);
+        this._baseErrors.pushObject(errorMessage);
+      }
     }
   }
 });
