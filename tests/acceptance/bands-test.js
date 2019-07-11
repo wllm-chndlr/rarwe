@@ -1,6 +1,7 @@
 import { module, test } from 'qunit';
 import { visit, click, fillIn, currentURL } from '@ember/test-helpers';
 import { loginAs, createBand } from 'rarwe/tests/helpers/custom-helpers';
+import { percySnapshot } from 'ember-percy/snapshot';
 import { setupApplicationTest } from 'ember-qunit';
 import setupMirageTest from 'ember-cli-mirage/test-support/setup-mirage';
 
@@ -21,6 +22,8 @@ module('Acceptance | Bands', function(hooks) {
 
     await loginAs('dave@tcv.com');
     await visit('/');
+
+    percySnapshot('List of bands');
 
     assert.dom('[data-test-rr=band-link]').exists({ count: 2 }, 'All band links are rendered');
     assert.dom('[data-test-rr=band-list-item]:first-child').hasText("Radiohead", 'The first band link contains the band name');
@@ -54,6 +57,9 @@ module('Acceptance | Bands', function(hooks) {
 
     await visit('/');
     await click('[data-test-rr=band-link]');
+
+    percySnapshot('Sort songs - Default sorting order');
+
     assert.equal(currentURL(), '/bands/1/songs');
 
     assert.dom('[data-test-rr=song-list-item]:first-child').hasText('Elephants', 'The first song is the highest ranked, first one in the alphabet');
