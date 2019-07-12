@@ -8,7 +8,7 @@
   </div>
   <div class="rr-sort-panel">
 
-    {{#link-to 
+    {{!-- {{#link-to 
       (query-params sort="ratingDesc") 
       class="rr-sort-button" 
       data-test-rr="sort-by-rating-desc"
@@ -42,7 +42,20 @@
     }}
       Title
       {{fa-icon "angle-up"}}
-    {{/link-to}}
+    {{/link-to}} --}}
+
+<select class="rr-select" data-test-rr="sort-selector"
+onchange={{action (mut sortBy) value="target.value"}}>
+<option value="ratingDesc" data-test-rr="sort-by-rating-desc">By
+rating, descending</option>
+<option value="ratingAsc" data-test-rr="sort-by-rating-asc">By
+rating, ascending</option>
+<option value="titleDesc" data-test-rr="sort-by-title-desc">By
+title, descending</option>
+<option value="titleAsc" data-test-rr="sort-by-title-asc">By
+title, ascending</option>
+</select>
+
   </div>
 </div>
 <ul class="rr-list">
