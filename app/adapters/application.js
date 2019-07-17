@@ -3,12 +3,12 @@ import DS from 'ember-data';
 import ENV from 'rarwe/config/environment';
 
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
-  host: ENV.apiHost,
+    host: ENV.apiHost,
 
-  authorize(xhr) {
-    let { token } = this.get('session.data.authenticated');
-    if (token) {
-      xhr.setRequestHeader('Authorization', `Bearer ${token}`);
+    authorize(xhr) {
+        let { token } = this.get('session.data.authenticated');
+        if (token) {
+            xhr.setRequestHeader('Authorization', `Bearer ${token}`);
+        }
     }
-  }
 });
